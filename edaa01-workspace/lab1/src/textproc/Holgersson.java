@@ -15,9 +15,10 @@ public class Holgersson {
 
 	public static void countWords() throws FileNotFoundException {
 		List<TextProcessor> processors = new ArrayList<TextProcessor>();
-		processors.add(new SingleWordCounter("nils"));
-		processors.add(new SingleWordCounter("norge"));
-		processors.add(new MultiWordCounter(REGIONS));
+		
+//		processors.add(new SingleWordCounter("nils"));
+//		processors.add(new SingleWordCounter("norge"));
+//		processors.add(new MultiWordCounter(REGIONS));
 		
 		Scanner bad_words = new Scanner(new File("../lab1/undantagsord.txt"));
 		processors.add(new GeneralWordCounter(bad_words, 200));

@@ -15,6 +15,8 @@ public class GeneralWordCounter implements TextProcessor{
 	public GeneralWordCounter(Scanner scanner, int lower_bound){
 		this.lower_bound = lower_bound;
 		
+		// Skiljer typ 100 ms mellan HashMap och TreeMap (hashmap snabbare)
+		
 		// HashMap tar inte hänsyn till ordningen
 		//word_counter = new HashMap<String, Integer>();
 		
