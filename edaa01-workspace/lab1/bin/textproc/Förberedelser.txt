@@ -1,0 +1,23 @@
+F1
+	a) 	koden skriver ut 20 rader.
+	
+	b) 	En arraylist är en "ordered collection" och eftersom vi bara
+	 	anropar ArrayList.add(...) så kan vi vara säkra på att talen
+	 	skrivs ut i samma ordning som vi la in dem.
+	 	
+F2
+	a) 	Nu kommer bara 10 rader att skrivas ut eftersom ett Set inte
+		tillåter duplikationer av tal.
+		
+	b) 	Enligt dokumentationen så kan ett Set inte garantera en
+		konsekvent iterations-ordning över tid, så nej vi kan
+		inte vara säker på ordningen i utskriften.
+		
+F3
+	a) String, Integer
+	
+F4
+	12 skrivs ut
+	
+F5
+	Map.containsKey(...)

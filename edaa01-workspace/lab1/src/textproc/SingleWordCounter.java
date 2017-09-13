@@ -10,13 +10,14 @@ public class SingleWordCounter implements TextProcessor {
 	}
 
 	public void process(String w) {
-		if (w == word) {
+		//if (w == word) { Jämför referenser, dvs. om objekten är samma.
+		if(w.equals(word)){
 			n++;
 		}
 	}
 
 	public void report() {
-		System.out.println(word + ": " + n);
+		System.out.println(word + ": " + n + "\n");
 	}
 
 }

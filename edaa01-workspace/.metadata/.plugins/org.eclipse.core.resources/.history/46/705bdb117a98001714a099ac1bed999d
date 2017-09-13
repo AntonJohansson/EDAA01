@@ -1,0 +1,41 @@
+package textproc;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+
+public class GeneralWordCounter implements TextProcessor{
+	Map<String, Integer> word_counter;
+	Set<String> bad_words;
+	
+	public GeneralWordCounter(Scanner scanner){
+		word_counter = new HashMap<String, Integer>();
+		bad_words = new HashSet<String>();
+		
+		while(scanner.hasNext()){
+			String word = scanner.next();
+			bad_words.add(words);
+		}
+	}
+	
+	@Override
+	public void process(String w) {
+		Integer count = word_counter.get(w);
+				
+		if(count != null){
+			word_counter.put(w, count + 1);	
+		}
+		
+	}
+
+	@Override
+	public void report() {
+		// Gå igenom alla ord i mapen
+		for(String word : word_counter.keySet()){
+			System.out.printf("%s: %d\n", word, word_counter.get(word));
+		}
+	}
+
+}

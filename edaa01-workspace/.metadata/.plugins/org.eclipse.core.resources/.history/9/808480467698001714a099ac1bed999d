@@ -1,0 +1,25 @@
+package textproc;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MultiWordCounter implements TextProcessor{
+	Map<String, int> word_counter;
+	
+	public MultiWordCounter(String[] words){
+		word_counter = new HashMap<String, Int>();
+	}
+	
+	@Override
+	public void process(String w) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void report() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,36 @@
+package textproc;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class GeneralWordCounter implements TextProcessor{
+	Map<String, Integer> word_counter;
+	
+	public GeneralWordCounter(Scanner scanner){
+		word_counter = new HashMap<String, Integer>();
+		
+		// Set startvärde till 0 före varje ord.
+		for(String s : words){
+			word_counter.put(s, 0);
+		}
+	}
+	
+	@Override
+	public void process(String w) {
+		Integer count = word_counter.get(w);
+				
+		if(count != null){
+			word_counter.put(w, count + 1);	
+		}
+		
+	}
+
+	@Override
+	public void report() {
+		// Gå igenom alla ord i mapen
+		for(String word : word_counter.keySet()){
+			System.out.printf("%s: %d\n", word, word_counter.get(word));
+		}
+	}
+
+}

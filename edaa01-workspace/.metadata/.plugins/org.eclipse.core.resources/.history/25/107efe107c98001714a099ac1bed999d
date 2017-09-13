@@ -1,0 +1,57 @@
+package textproc;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Holgersson {
+
+	public static final String[] REGIONS = { "blekinge", "bohuslän", "dalarna", "dalsland", "gotland", "gästrikland",
+			"halland", "hälsingland", "härjedalen", "jämtland", "lappland", "medelpad", "närke", "skåne", "småland",
+			"södermanland", "uppland", "värmland", "västerbotten", "västergötland", "västmanland", "ångermanland",
+			"öland", "östergötland" };
+
+	public static void countWords() throws FileNotFoundException {
+		List<TextProcessor> processors = new ArrayList<TextProcessor>();
+		processors.add(new SingleWordCounter("nils"));
+		processors.add(new SingleWordCounter("norge"));
+		processors.add(new MultiWordCounter(REGIONS));
+		
+		Scanner bad_words = new Scanner(new File("../lab1/undantagsord.txt"));
+		processors.add(new GeneralWordCounter(bad_words, 200));
+
+		Scanner s = new Scanner(new File("../lab1/nilsholg.txt"));
+		s.useDelimiter("(\\s|,|\\.|:|;|!|\\?|'|\\\")+"); // se handledning
+
+		while (s.hasNext()) {
+			String word = s.next().toLowerCase();
+
+			for(TextProcessor p : processors){
+				p.process(word);
+			}
+		}
+
+		s.close();
+
+		for(TextProcessor p : processors){
+			p.report();
+		}
+	}
+	
+	public static void main(String[] args)  throws FileNotFoundException {
+		int sample_count = 3;
+		long total_time;
+		
+		for(int i = 0; i < sample_count; i++){
+			long t0 = System.nanoTime();
+			countWords();
+			long t1 = System.nanoTime();
+			
+			long double ms = (t1 - t0)/1000000-0
+			System.out.printf("Sample %d\t:\t%d ms",);
+		}
+		
+	}
+}
