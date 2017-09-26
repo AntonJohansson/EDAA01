@@ -19,7 +19,23 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	 * 			to this queue, else false
 	 */
 	public boolean offer(E e) {
-		return false;
+		QueueNode<E> node = new QueueNode<E>(e);
+		
+		if(last == null){
+			// Empty list. QueueNode<E>.next should reference itself.
+			node.next = node;
+		}else{
+			// Copy next reference from last node.
+			node.next = last.next;
+			// Make last node point to the new one.
+			last.next = node;
+		}
+		
+		// Set the new node as the last one and increase size.
+		last = node;
+		size++;
+		
+		return true;
 	}
 	
 	/**	
@@ -27,7 +43,7 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	 * @return the number of elements in this queue
 	 */
 	public int size() {		
-		return 0;
+		return size;
 	}
 	
 	/**	
@@ -37,7 +53,7 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	 * 			if this queue is empty
 	 */
 	public E peek() {
-		return null;
+		return (last != null) ? last.next.element : null;
 	}
 
 	/**	
@@ -47,7 +63,35 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	 * @return 	the head of this queue, or null if the queue is empty 
 	 */
 	public E poll() {
-		return null;
+		// Retrive first element if it exists.
+		E element = null;
+		
+		if(last != null){
+			element = last.next.element;
+			
+			if(last.next == last){
+				last = null;
+			}else{
+				// Orphan the first element.
+				// Garbage collector will remove it :)
+				last.next = last.next.next;	
+			}
+			
+			size--;
+		}
+		
+		return element;
+	}
+	
+	/**
+	 * Appends the specified queue to this queue
+	 * post: all elements from the specified queue are appended
+	 * to this queue. The specified queue (q) is empty after the call.
+	 * @param q the queue to append.
+	 * @throws IllegalArgumentException if this queue and q are identical.
+	 */
+	public void append(FifoQueue<E> q){
+		
 	}
 	
 	/**	
@@ -55,7 +99,39 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 	 * @return an iterator over the elements in this queue
 	 */	
 	public Iterator<E> iterator() {
-		return null;
+		// New iterator starts at first value.
+		return new QueueIterator();
+	}
+	
+	private class QueueIterator implements Iterator<E>{
+		private QueueNode<E> pos;
+		
+		private QueueIterator(){
+			// Either references the first node or null.
+			pos = (last != null) ?  last.next : null;
+		}
+		
+		@Override
+		public boolean hasNext() {
+			// Has next node if the current position isn't the
+			// last one and it isn't null.
+			// Since a circular linked list has no end as long as the size > 0,
+			// this might also always return true as a long as size > 0.
+			return (pos != null && pos != last);
+		}
+
+		@Override
+		public E next() {
+			if(hasNext()){
+				// Advance to the next node and return the
+				// current element.
+				E element = pos.element;
+				pos = pos.next;
+				return element;	
+			}else{
+				throw new NoSuchElementException();
+			}
+		}
 	}
 	
 	private static class QueueNode<E> {

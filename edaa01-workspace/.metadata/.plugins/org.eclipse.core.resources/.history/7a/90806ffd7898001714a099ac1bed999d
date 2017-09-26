@@ -1,6 +1,0 @@
-F1
-	a) 	koden skriver ut 20 rader.
-	
-	b) 	En arraylist är en "ordered collection" och eftersom vi bara
-	 	anropar ArrayList.add(...) så kan vi vara säkra på att talen
-	 	skrivs ut i samma ordning som vi la in dem.
