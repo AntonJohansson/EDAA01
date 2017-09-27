@@ -1,0 +1,22 @@
+package testqueue;
+
+import static org.junit.Assert.*;
+
+import java.util.Queue;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import queue_singlelinkedlist.FifoQueue;
+
+public class TestAppendFifoQueue {
+	private Queue<Integer> q1;
+	private Queue<Integer> q2;
+	
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}
