@@ -142,7 +142,7 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 			// last one and it isn't null.
 			// Since a circular linked list has no end as long as the size > 0,
 			// this might also always return true as a long as size > 0.
-			return (pos != null && pos != last);
+			return (pos != null);
 		}
 
 		@Override
@@ -151,7 +151,13 @@ public class FifoQueue<E> extends AbstractQueue<E> implements Queue<E> {
 				// Advance to the next node and return the
 				// current element.
 				E element = pos.element;
-				pos = pos.next;
+				
+				if(pos != last){
+					pos = pos.next;
+				}else{
+					pos = null;
+				}
+				
 				return element;	
 			}else{
 				throw new NoSuchElementException();
