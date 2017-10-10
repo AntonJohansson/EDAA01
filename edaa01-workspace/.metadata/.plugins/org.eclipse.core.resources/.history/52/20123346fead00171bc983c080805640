@@ -1,0 +1,2 @@
+F2. Map.entrySet()
+F3. (e1,e2) -> e1.getValue() - e2.getValue();

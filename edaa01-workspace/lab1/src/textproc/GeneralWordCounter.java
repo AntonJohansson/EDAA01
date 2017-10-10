@@ -57,4 +57,11 @@ public class GeneralWordCounter implements TextProcessor{
 		System.out.printf("\n");
 	}
 
+	/*
+	 * Returnerar ett set av Map.Entry innehållande alla ord-nummer
+	 * som skapades under körningen av wordcountern.
+	 */
+	public Set<Map.Entry<String, Integer>> getWords(){
+		return word_counter.entrySet();
+	}
 }

@@ -1,0 +1,55 @@
+package lab3;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+import textproc.GeneralWordCounter;
+import textproc.TextProcessor;
+
+public class BookReaderController extends Application {
+
+	private GeneralWordCounter process_book(String book_file, String bad_words_file) throws FileNotFoundException{
+		// Read in bad words.
+		Scanner bad_words = new Scanner(new File(bad_words_file));
+
+		GeneralWordCounter word_counter = new GeneralWordCounter(bad_words, /*lower bound*/ 200);
+
+		Scanner s = new Scanner(new File(book_file));
+		s.useDelimiter("(\\s|,|\\.|:|;|!|\\?|'|\\\")+"); // se handledning
+
+		// Process words in book
+		while (s.hasNext()) {
+			String word = s.next().toLowerCase();
+
+			word_counter.process(word);
+		}
+
+		s.close();
+		
+		return word_counter;
+	}
+	
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		BorderPane root = new BorderPane();
+		
+		GeneralWordCounter counter = process_book("../lab3/nilsholg.txt", "../lab3/undantagsord.txt");
+		
+		Scene scene = new Scene(root);
+		primaryStage.setTitle("Book Reader");
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+
+	public static void main(String[] args) {
+		Application.launch(args);
+	}
+
+}
