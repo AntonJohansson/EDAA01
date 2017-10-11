@@ -37,6 +37,11 @@ import textproc.GeneralWordCounter;
 
 public class BookReaderController extends Application {
 
+	
+	/*
+	 * Läs in en bok från en fil och mata in den till en TextProcessor
+	 * som räknar antalet ord.
+	 */
 	private GeneralWordCounter process_book(String book_file, String bad_words_file) throws FileNotFoundException{
 		// Read in bad words.
 		Scanner bad_words = new Scanner(new File(bad_words_file));
@@ -82,6 +87,7 @@ public class BookReaderController extends Application {
 		Button b_frequency = new Button("Frequency");
 		Button b_find = new Button("Find");
 		TextField textfield = new TextField();
+		
 		b_alphabetic.setOnAction((value) -> words.sort((e1, e2) -> e1.getKey().compareTo(e2.getKey())));
 		b_frequency.setOnAction((value) -> words.sort((e1, e2) -> e2.getValue() - e1.getValue()));
 		b_find.setOnAction((value) -> {
@@ -101,11 +107,13 @@ public class BookReaderController extends Application {
 		});
 		
 		// Make button fire on enter.
-		textfield.setOnKeyPressed((event) -> {
+		/*textfield.setOnKeyPressed((event) -> {
 			if(event.getCode().equals(KeyCode.ENTER)){
 				b_find.fire();
 			}
-		});
+		});*/
+		
+		b_find.setDefaultButton(true);
 		
 		// Add elements to hbox.
 		HBox hbox = new HBox(b_alphabetic, b_frequency, textfield, b_find);

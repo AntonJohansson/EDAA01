@@ -1,0 +1,8 @@
+F2.	Map.entrySet()
+F3.	(e1,e2) -> e2.getValue() - e1.getValue();
+F4.	ListView.scrollTo(int)
+	ButtonBase.setOnAction(...)
+	TextInputControl.text(...)
+	HBox.getChildren().addAll(...)
+F5.	Antar att superinterfacet Observable skiljer sig.
+F6.	
