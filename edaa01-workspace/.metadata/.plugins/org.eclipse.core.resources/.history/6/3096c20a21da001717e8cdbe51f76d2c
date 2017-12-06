@@ -1,0 +1,65 @@
+package map;
+
+public class SimpleHashMap<K,V> implements Map<K,V>{
+	private static class Entry<K,V> implements Map.Entry<K, V>{
+		private K key;
+		private V value;
+		private Entry<K,V> next;
+		
+		public Entry(){
+			next = null;
+		}
+		
+		@Override
+		public K getKey() {
+			return key;
+		}
+
+		@Override
+		public V getValue() {
+			return value;
+		}
+
+		@Override
+		public V setValue(V value) {
+			this.value = value;
+			return value;
+		}
+		
+		@Override
+		public String toString(){
+			return K + " = " + V;
+		}
+	}
+	
+	@Override
+	public V get(Object arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public V put(K arg0, V arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public V remove(Object arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int size() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+}

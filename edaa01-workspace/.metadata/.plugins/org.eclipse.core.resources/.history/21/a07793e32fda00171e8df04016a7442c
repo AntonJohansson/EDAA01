@@ -1,0 +1,11 @@
+package map;
+
+public class Main {
+
+	public static void main(String[] args) {
+		SimpleHashMap map = new SimpleHashMap();
+		
+		java.util.Random random = new java.util.Random();
+	}
+
+}

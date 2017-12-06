@@ -1,0 +1,19 @@
+package map;
+
+public class Main {
+
+	public static void main(String[] args) {
+		SimpleHashMap<Integer, Integer> map = new SimpleHashMap<Integer, Integer>();
+		
+		final int n = 10;
+		
+		java.util.Random random = new java.util.Random();
+		for(int i = 0; i < n; i++){
+			int r = random.nextInt(10) - 5;
+			map.put(r, r);
+		}
+		
+		System.out.println(map.show());
+	}
+
+}
